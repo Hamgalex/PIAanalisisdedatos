@@ -1,14 +1,26 @@
 function mostrar()
 {
-    string="";
-    n=document.getElementById("numvar");
-    var element =  document.getElementById("coord");
+    n=document.getElementById("numvar").value;
+    console.log(n);
     for(i=0;i<n;i++)
     {
-        string+="uwu";
-       // string="<span>x"+i+"<\\span><input type='number' name='x"+i+"\\>";
-        
+        var inputx = document.createElement("input");
+        var inputy = document.createElement("input");
+        var labelx = document.createElement("LABEL");
+        var labely = document.createElement("LABEL");
+        inputx.type = "number";
+        inputx.id= "x"+i;
+        labelx.innerHTML="x"+i;
+        inputy.type = "number";
+        inputy.id= "y"+i;
+        labely.innerHTML="y"+i;
+
+
+        var br = document.createElement("br");
+        document.getElementById('coord').appendChild(labelx);
+        document.getElementById('coord').appendChild(inputx);
+        document.getElementById('coord').appendChild(labely);
+        document.getElementById('coord').appendChild(inputy);
+        document.getElementById('coord').appendChild(br);
     }
-    element.innerHTML=string;
-    document.getElementById('coord').appendChild(personaje);
 }
