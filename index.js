@@ -7,8 +7,10 @@ function mostrar()
     {
         var inputx = document.createElement("input");
         var inputy = document.createElement("input");
-        var labelx = document.createElement("LABEL");
-        var labely = document.createElement("LABEL");
+        var labelx = document.createElement("span");
+        var labely = document.createElement("span");
+        
+        var br = document.createElement("br")
         inputx.type = "number";
         inputx.id= "x"+i;
         labelx.innerHTML="x"+i;
@@ -20,12 +22,16 @@ function mostrar()
         var br = document.createElement("br");
         document.getElementById('coord').appendChild(labelx);
         document.getElementById('coord').appendChild(inputx);
+        
         document.getElementById('coord').appendChild(labely);
         document.getElementById('coord').appendChild(inputy);
-        document.getElementById('coord').appendChild(br);
+        
     }
     botonsolve.disabled=false;
+    botonsolve.classList.remove("botonDisabled")
+    botonsolve.classList.add("boton")
     numvar.disabled=true;
+   
 }
 function solver()
 {
@@ -218,7 +224,7 @@ function draw() {
  axes.doNegativeX = true;
 
  showAxes(ctx,axes);
- funGraph(ctx,axes,fun1,"rgb(11,153,11)",1); 
+ funGraph(ctx,axes,fun1,"#2ceac8",4); 
 }
 
 function funGraph (ctx,axes,func,color,thick) {

@@ -1,0 +1,74 @@
+*{
+  margin:0px; 
+  padding: 0px;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+body{
+  background: #252733;
+}
+h1{
+  text-align:  center;
+  margin-bottom: 50px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+.cuantas{
+  margin-left:10px;
+  font-weight: regular;
+}
+input{
+  background-color: black;
+  border: 0px;
+  border-radius: 5px; 
+  padding: 5px;
+  margin: 10px;
+}
+
+.boton{
+  padding:5px 10px 5px 10px; 
+  background-color: #6846ec;
+  visibility: visible;
+}
+
+.botonDisabled{
+  visibility: hidden;
+}
+
+.boton :hover{
+  cursor:pointer;
+  background-color: #7e5dfc;
+  
+}
+
+.container-grafica{
+  width:100%;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.grafica{
+  background-color: #151718;
+  border: solid #61616c 2px; 
+  border-radius: 10px;
+}
+
+.res{
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.coordenadas{
+  display: flex; 
+  flex-direction: column;
+  justify-content: center; 
+  flex-wrap: wrap;
+}
+
+span{
+  margin-left:10px;
+}
+
+
