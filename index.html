@@ -2,24 +2,31 @@
 <html>
 <head>
     <title>Pia Análisis de datos</title>
+    <!--Poppins Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!--JS File-->
     <script src="index.js"></script>
+    <!--CSS File-->
+    <link rel="stylesheet" href="./index.css">
 </head>
 <body>
     <div>
-        <h1>PIA ANALISIS DE DATOS</h1>
-        <h3>COORDENADAS</h3>
+        <h1>Polinomio de interpolación único</h1>
+        <div class="cuantas">¿Cuantas coordenadas deseas digitar?</div>
         <input type="number" id="numvar">
-        <input type="submit" onclick="mostrar()">
+        <input class="boton" type="submit" onclick="mostrar()">
 
-        <div id="coord" >
+        <div id="coord" class="coordenadas" >
             
         </div>
-        <input id="botonsolve" type="submit" onclick="solver()" disabled=true >
+        <input class="botonDisabled" id="botonsolve" type="submit" onclick="solver()" disabled=true >
 
-        <h3 id="resultado"></h3>
+        <h3 id="resultado" class="res"></h3>
 
-        <div >
-            <canvas id="canvas" width="500px" height="500px"></canvas>
+        <div class="container-grafica" >
+            <canvas class="grafica" id="canvas" width="500px" height="500px"></canvas>
         </div>   
         
 </body>
