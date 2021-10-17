@@ -1,3 +1,4 @@
+stringu="";
 function mostrar()
 {
     n=document.getElementById("numvar").value;
@@ -72,12 +73,13 @@ function solver()
 
 
     console.log(a);
+    draw();
 }
 
 
 let M = 10;
  
-// Function to print the matrix
+
 function PrintMatrix(a,n)
 {
     for (let i = 0; i < n; i++)
@@ -88,8 +90,7 @@ function PrintMatrix(a,n)
     }
 }
  
-// function to reduce matrix to reduced
-// row echelon form.
+
 function PerformOperation(a,n)
 {
     let i, j, k = 0, c, flag = 0, m = 0;
@@ -135,17 +136,12 @@ function PerformOperation(a,n)
     return flag;
 }
  
-// Function to print the desired result
-// if unique solutions exists, otherwise
-// prints no solution or infinite solutions
-// depending upon the input given.
+
 function PrintResult(a,n,flag)
 {
     
     string="";
-    if (flag == 2)    
-        string="Hay puntos repetidos, lo que causa un error.";
-    else if (flag == 3)    
+    if (flag == 3)    
         string="No hay solución para el sistema de ecuaciones";
        
        
@@ -155,22 +151,36 @@ function PrintResult(a,n,flag)
     else {
         
         for (let i = 0; i < n; i++)
+        {
             if(i==0)
-                string+=" "+(a[i][n] / a[i][i]);
+            {
+                if(a[i][i]!=0)
+                    string+=" "+(a[i][n] / a[i][i]);
+            } 
             else
                 if(i==1)
-                    string+=" + "+(a[i][n] / a[i][i])+"x";   
+                {
+                    if(a[i][n]!=0)
+                        string+=" + "+(a[i][n] / a[i][i])+"*x";   
+                }
                 else
-                    string+=" + "+(a[i][n] / a[i][i])+"x^"+i; 
+                {
+                    if(a[i][n]!=0)
+                        string+=" + "+(a[i][n] / a[i][i])+"*x^"+i; 
+                }
+        }
+            
                     
                     
     }
 
     document.getElementById("resultado").innerHTML =string;
+    stringu=string;
+    stringu=stringu.replace(/\^/g,"\*\*");
+    console.log(stringu);
 }
  
-// To check whether infinite solutions
-// exists or no solution exists
+
 function CheckConsistency(a,n,flag)
 {
     let i, j;
@@ -190,7 +200,52 @@ function CheckConsistency(a,n,flag)
     return flag;
 }
  
+function fun1(x) 
+{
 
-// Order of Matrix(n)
+
+    return eval(stringu);
+}
+
+function draw() {
+ var canvas = document.getElementById("canvas");
+ if (null==canvas || !canvas.getContext) return;
+
+ var axes={}, ctx=canvas.getContext("2d");
+ axes.x0 = .5 + .5*canvas.width;  // x0 pixels from left to x=0
+ axes.y0 = .5 + .5*canvas.height; // y0 pixels from top to y=0
+ axes.scale = 40;                 // 40 pixels from x=0 to x=1
+ axes.doNegativeX = true;
+
+ showAxes(ctx,axes);
+ funGraph(ctx,axes,fun1,"rgb(11,153,11)",1); 
+}
+
+function funGraph (ctx,axes,func,color,thick) {
+ var xx, yy, dx=4, x0=axes.x0, y0=axes.y0, scale=axes.scale;
+ var iMax = Math.round((ctx.canvas.width-x0)/dx);
+ var iMin = axes.doNegativeX ? Math.round(-x0/dx) : 0;
+ ctx.beginPath();
+ ctx.lineWidth = thick;
+ ctx.strokeStyle = color;
+
+ for (var i=iMin;i<=iMax;i++) {
+  xx = dx*i; yy = scale*func(xx/scale);
+  if (i==iMin) ctx.moveTo(x0+xx,y0-yy);
+  else         ctx.lineTo(x0+xx,y0-yy);
+ }
+ ctx.stroke();
+}
+
+function showAxes(ctx,axes) {
+ var x0=axes.x0, w=ctx.canvas.width;
+ var y0=axes.y0, h=ctx.canvas.height;
+ var xmin = axes.doNegativeX ? 0 : x0;
+ ctx.beginPath();
+ ctx.strokeStyle = "rgb(128,128,128)"; 
+ ctx.moveTo(xmin,y0); ctx.lineTo(w,y0);  // X axis
+ ctx.moveTo(x0,0);    ctx.lineTo(x0,h);  // Y axis
+ ctx.stroke();
+}
 
  
