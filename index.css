@@ -49,6 +49,7 @@ input{
   margin-bottom: 50px;
 }
 
+
 .grafica{
   background-color: #151718;
   border: solid #61616c 2px; 
@@ -67,6 +68,9 @@ input{
   flex-wrap: wrap;
 }
 
+.coordenadasxy{
+  text-align:center;
+}
 span{
   margin-left:10px;
 }

@@ -1,4 +1,5 @@
 stringu="";
+polinomio="";
 function mostrar()
 {
     n=document.getElementById("numvar").value;
@@ -148,7 +149,7 @@ function PrintResult(a,n,flag)
     
     string="";
     if (flag == 3 || flag==2)    
-        string="Introduzca correctamente los datos.";
+    polinomio="Introduzca correctamente los datos.";
        
        
 
@@ -176,11 +177,11 @@ function PrintResult(a,n,flag)
                 }
         }
             
-                    
+         polinomio="P(x)="+string;           
                     
     }
 
-    document.getElementById("resultado").innerHTML =string;
+    document.getElementById("resultado").innerHTML =polinomio;
     stringu=string;
     stringu=stringu.replace(/\^/g,"\*\*");
     console.log(stringu);
@@ -213,12 +214,21 @@ function fun1(x)
 
 function draw() {
  var canvas = document.getElementById("canvas");
+ var zoom=document.getElementById("zoom");
+
  if (null==canvas || !canvas.getContext) return;
+
+ if(zoom.value==0)
+ {
+     zoom.value=40;
+ }
+
+console.log(zoom.value);
 
  var axes={}, ctx=canvas.getContext("2d");
  axes.x0 = .5 + .5*canvas.width;  // x0 pixels from left to x=0
- axes.y0 = .5 + .5*canvas.height; // y0 pixels from top to y=0
- axes.scale = 40;                 // 40 pixels from x=0 to x=1
+ axes.y0 = .5 + .5*canvas.width; // y0 pixels from top to y=0
+ axes.scale = zoom.value;                 // zoom pixels from x=0 to x=1
  axes.doNegativeX = true;
 
  showAxes(ctx,axes);
