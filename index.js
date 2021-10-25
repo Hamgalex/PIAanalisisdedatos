@@ -147,8 +147,8 @@ function PrintResult(a,n,flag)
 {
     
     string="";
-    if (flag == 3)    
-        string="No hay solución para el sistema de ecuaciones";
+    if (flag == 3 || flag==2)    
+        string="Introduzca correctamente los datos.";
        
        
 
@@ -208,8 +208,6 @@ function CheckConsistency(a,n,flag)
  
 function fun1(x) 
 {
-
-
     return eval(stringu);
 }
 
